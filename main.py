@@ -1,3 +1,4 @@
+<<<<<<< Updated upstream
 '''
 curses experimenting
 '''
@@ -36,3 +37,36 @@ if __name__ == "__main__":
     typer.run(main)
 
 
+=======
+import curses
+from curses import wrapper
+
+
+fish = """
+           FISHKISSFISHKIS               
+       SFISHKISSFISHKISSFISH            F
+    ISHK   ISSFISHKISSFISHKISS         FI
+  SHKISS   FISHKISSFISHKISSFISS       FIS
+HKISSFISHKISSFISHKISSFISHKISSFISH    KISS
+  FISHKISSFISHKISSFISHKISSFISHKISS  FISHK
+      SSFISHKISSFISHKISSFISHKISSFISHKISSF
+  ISHKISSFISHKISSFISHKISSFISHKISSF  ISHKI
+SSFISHKISSFISHKISSFISHKISSFISHKIS    SFIS
+  HKISSFISHKISSFISHKISSFISHKISS       FIS
+    HKISSFISHKISSFISHKISSFISHK         IS
+       SFISHKISSFISHKISSFISH            K
+         ISSFISHKISSFISHK               
+      """
+
+def main(stdscr):
+    stdscr.clear()
+    fish = curses.newwin(10,10)
+    fish.addstr("hello world")
+    fish.refresh()
+    for i in range(12):
+        fish.move(0,1)
+        stdscr.refresh()
+        stdscr.clear()
+    stdscr.getch()
+wrapper(main)
+>>>>>>> Stashed changes
