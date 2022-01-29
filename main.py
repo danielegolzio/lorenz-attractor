@@ -1,22 +1,20 @@
-# SNAKES GAME
-# Use ARROW KEYS to play, SPACE BAR for pausing/resuming and Esc Key for exiting
+from cv2 import threshold
+import matplotlib.pyplot as plt
+import numpy as np
 
-import curses
-from curses import KEY_RIGHT, KEY_LEFT, KEY_UP, KEY_DOWN
-from random import randint
+n1, n2 = 0, 1
+count = 0
+terms = 10
+xp = []
+yp = []
+while count < terms:
+    xp.append(count)
+    yp.append(n1)
+    print(n1)
+    nth = n1 + n2
+    n1 = n2
+    n2 = nth
+    count+=1
 
-
-curses.initscr()
-win = curses.newwin(20, 60, 0, 0)
-win.keypad(1)
-curses.noecho()
-curses.curs_set(0)
-win.border(0)
-win.nodelay(1)
-
-key = KEY_RIGHT
-while key != 27:
-    pass
-
-
-curses.endwin()
+plt.plot(xp, yp)
+plt.show()
