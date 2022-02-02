@@ -1,32 +1,28 @@
-from re import T
-from cv2 import threshold
 import matplotlib.pyplot as plt
+from matplotlib.animation import FuncAnimation
 import numpy as np
 
+def collatz_conjecture():
 
-def mandelbrot_set():
-    loop = 50 # number of interations
-    div = 600 # divisions
+    x = 1234
+    xp = []
+    yp = []
+    counter = 0
+    while x != 1:
 
-    c = np.linspace(-2,2,div)[:,np.newaxis] + 1j*np.linspace(-2,2,div)[np.newaxis,:] 
+        xp.append(counter)
+        counter+=1
 
-    ones = np.ones(np.shape(c), np.int)
+        if x % 2 == 0:
+            x = x / 2
 
-    color = ones * loop + 5
-    z = 0
-    for n in range(0,loop):
-        z = z**2 + c
-        diverged = np.abs(z)>2
+        else:
+            x = (x * 3) + 1
 
-        color[diverged] = np.minimum(color[diverged], ones[diverged]*n)
+        yp.append(x)
 
-    plt.rcParams['figure.figsize'] = [12, 7.5]
-
-    plt.contourf(c.real, c.imag, color)
-    plt.xlabel("Real($c$)")
-    plt.ylabel("Imag($c$)")
-    plt.xlim(-2,2)
-    plt.ylim(-1.5,1.5)
+    fig, ax = plt.subplots()
+    ax.plot(xp, yp)
     plt.show()
 
-mandelbrot_set()
+collatz_conjecture()
