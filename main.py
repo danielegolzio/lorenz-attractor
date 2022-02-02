@@ -5,8 +5,8 @@ import numpy as np
 
 
 def mandelbrot_set():
-    loop = 50 # number of interations
-    div = 600 # divisions
+    loop = 50
+    div = 600
 
     c = np.linspace(-2,2,div)[:,np.newaxis] + 1j*np.linspace(-2,2,div)[np.newaxis,:] 
 
@@ -29,4 +29,25 @@ def mandelbrot_set():
     plt.ylim(-1.5,1.5)
     plt.show()
 
-mandelbrot_set()
+def collaz_conjecture(n):
+    xp = []
+    yp = []
+    fig, ax = plt.subplots()
+    x = 0
+
+    while n != 1:
+        xp.append(x)
+        x+=1
+
+        if n%2 == 0:
+            n = n / 2
+
+        else:
+            n = (3*n)+1
+
+        yp.append(n)
+
+    ax.plot(xp, yp)
+    plt.show()
+
+collaz_conjecture(79)
