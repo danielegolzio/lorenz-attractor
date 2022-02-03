@@ -4,9 +4,7 @@ from matplotlib.animation import FuncAnimation
 import numpy as np
 import math as m
 
-
 def collatz_conjecture(n):
-
     ax = plt.subplots()
     xp = []
     yp = []
@@ -43,7 +41,7 @@ def chaos():
         yp.append(x)
         xp.append(n)
         n += 0
-    
+
     plt.plot(xp, yp)
     plt.show()
 
@@ -55,14 +53,12 @@ def circle():
     t = 0
     y = 0
     x = 0
-    
+
     while t != 100:
-        x = m.sin(t)
-        y = m.cos(t)
+        x = m.cos(t)
+        y = m.sin(t)
         yp.append(y)
         xp.append(x)
-        t+=0.1
+        t += 1
     plt.plot(xp, yp)
     plt.show()
-
-circle()
