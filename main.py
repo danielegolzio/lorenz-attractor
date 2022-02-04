@@ -33,14 +33,15 @@ def chaos():
     yp = []
 
     n = 0
-    r = 1
+    r = 0
 
-    while n != 1:
+    while n != 10 and r != 10:
         x = n
         x = r * x * (1 - x)
         yp.append(x)
         xp.append(n)
-        n += 0
+        n += 1
+        r += 1
 
     plt.plot(xp, yp)
     plt.show()
@@ -54,11 +55,23 @@ def circle():
     y = 0
     x = 0
 
-    while t != 100:
+    while t != 90:
         x = m.cos(t)
         y = m.sin(t)
         yp.append(y)
         xp.append(x)
         t += 1
     plt.plot(xp, yp)
+    plt.show()
+
+
+def parametric():
+    ax = plt.figure().add_subplot(projection='3d')
+
+    theta = np.linspace(-4*np.pi, 4*np.pi, 100)
+    z = np.linspace(-2, 2, 100)
+    x = np.sin(theta)
+    y = np.cos(theta)
+
+    ax.plot(x,y,z)
     plt.show()
