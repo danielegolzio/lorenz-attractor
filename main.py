@@ -3,6 +3,8 @@ import matplotlib.pyplot as plt
 from matplotlib.animation import FuncAnimation
 import numpy as np
 import math as m
+import pygame
+
 
 def collatz_conjecture(n):
     ax = plt.subplots()
@@ -23,6 +25,7 @@ def collatz_conjecture(n):
         plt.plot(xp, yp)
         plt.show()
         plt.figure().clear()
+
 
 def chaos():
     """
@@ -46,32 +49,53 @@ def chaos():
     plt.plot(xp, yp)
     plt.show()
 
-def circle():
-    ax = plt.subplots()
-    xp = []
-    yp = []
 
-    t = 0
+def lorenz():
+
+    pygame.init()
+    dimensions = (1920, 1080)
+    width = dimensions[0]//2
+    height = dimensions[1]//2
+    screen = pygame.display.set_mode(dimensions)
+    clock = pygame.time.Clock()
+    fps = 100
+    white = (255,255,255)
+
+    o = 10.0 # sigma
+    p = 28.0 # rho
+    B = 8.0 / 3.0 # beta
+    x = 0.01
     y = 0
-    x = 0
+    z = 0
+    scale = 16
+    t = 0
 
-    while t != 90:
-        x = m.cos(t)
-        y = m.sin(t)
-        yp.append(y)
-        xp.append(x)
-        t += 1
-    plt.plot(xp, yp)
-    plt.show()
+    run = True
+    screen.fill((0,0,0))
+    while run:
+        clock.tick(fps)
+        for i in pygame.event.get():
+            if i.type == pygame.QUIT:
+                run = False
+        
+        prev_coords = (int((x*scale)+500+width//2),int((y*scale)+height//2)+height//2)
 
+        t = 0.01
+        dx = (o * (y - x)) * t
+        x = x + dx
 
-def parametric():
-    ax = plt.figure().add_subplot(projection='3d')
+        dy = ((x * (p - z)) - y) * t
+        y = y + dy
 
-    theta = np.linspace(-4*np.pi, 4*np.pi, 100)
-    z = np.linspace(-2, 2, 100)
-    x = np.sin(theta)
-    y = np.cos(theta)
+        dz = ((x * y) - (B * z)) * t
+        z = z + dz
+        
+        coords = (int((x*scale)+500+width//2),int((y*scale)+height//2)+height//2)
+        
+        # pygame.draw.circle(screen, white, coords, 2)
+        # pygame.draw.circle(screen, white, prev_coords, 2)
+        pygame.draw.line(screen, white, prev_coords, coords)
+        pygame.display.update()
+pygame.quit()
 
-    ax.plot(x,y,z)
-    plt.show()
+lorenz()
