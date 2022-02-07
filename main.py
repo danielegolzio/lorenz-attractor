@@ -44,11 +44,9 @@ def lorenz():
         
         coords = (int((x*scale)+500+width//2),int((y*scale)+height//2)+height//2)
         
-        # pygame.draw.circle(screen, white, coords, 2)
-        # pygame.draw.circle(screen, white, prev_coords, 2)
         pygame.draw.line(screen, white, prev_coords, coords)
         pygame.display.update()
 pygame.quit()
 
 if __name__ == "__main__":
-    lorenz
+    lorenz()
