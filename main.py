@@ -1,54 +1,5 @@
-from tkinter import N
-import matplotlib.pyplot as plt
-from matplotlib.animation import FuncAnimation
 import numpy as np
-import math as m
 import pygame
-
-
-def collatz_conjecture(n):
-    ax = plt.subplots()
-    xp = []
-    yp = []
-    x = 0
-
-    while n != 1:
-        x += 1
-        xp.append(x)
-
-        if n % 2 == 0:
-            n = n / 2
-        else:
-            n = (3 * n) + 1
-
-        yp.append(n)
-        plt.plot(xp, yp)
-        plt.show()
-        plt.figure().clear()
-
-
-def chaos():
-    """
-    Xn+1 = RXn (1-Xn)
-    """
-    ax = plt.subplots()
-    xp = []
-    yp = []
-
-    n = 0
-    r = 0
-
-    while n != 10 and r != 10:
-        x = n
-        x = r * x * (1 - x)
-        yp.append(x)
-        xp.append(n)
-        n += 1
-        r += 1
-
-    plt.plot(xp, yp)
-    plt.show()
-
 
 def lorenz():
 
@@ -58,7 +9,7 @@ def lorenz():
     height = dimensions[1]//2
     screen = pygame.display.set_mode(dimensions)
     clock = pygame.time.Clock()
-    fps = 100
+    fps = 75
     white = (255,255,255)
 
     o = 10.0 # sigma
@@ -98,4 +49,5 @@ def lorenz():
         pygame.display.update()
 pygame.quit()
 
-lorenz()
+if __name__ == "__main__":
+    lorenz
