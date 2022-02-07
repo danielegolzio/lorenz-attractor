@@ -4,7 +4,8 @@ import typer
 from colors import colors
 
 def main(
-    color: str = typer.Argument(None)
+    color: str = typer.Argument(None),
+    speed: int = typer.Argument(None)
 ):
 
     if color == "r":
@@ -24,13 +25,20 @@ def main(
     else:
         colorI = 7
 
+    
     pygame.init()
+
     dimensions = (1920, 1080)
     width = dimensions[0]//2
     height = dimensions[1]//2
+
     screen = pygame.display.set_mode(dimensions)
     clock = pygame.time.Clock()
-    fps = 75
+
+    if speed != None:
+        fps = speed
+    else:
+        fps = 75
 
     o = 10.0 # sigma
     p = 28.0 # rho
