@@ -1,5 +1,6 @@
 import numpy as np
 import pygame
+import typer
 
 def lorenz():
 
