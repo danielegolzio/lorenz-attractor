@@ -39,7 +39,7 @@ def main(
     if speed != None:
         fps = speed
     else:
-        fps = 75
+        fps = 60
 
     o = 10.0 # sigma
     p = 28.0 # rho
@@ -93,6 +93,8 @@ def main(
             coords = (int((x*scale)+500+width//2),int((y*scale)+height//2)+height//2)
 
         pygame.draw.line(screen, colors[colorI], prev_coords, coords)
+        # rainbow >
+        # pygame.draw.line(screen, (np.random.randint(100, 255),np.random.randint(100, 255), np.random.randint(100, 255)), prev_coords, coords)
         pygame.display.update()
 
 pygame.quit()
