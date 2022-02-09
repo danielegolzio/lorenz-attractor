@@ -17,7 +17,7 @@ python main.py [arguments]
 ```
 ```
 Arguments:
-    [VERSION]   Change plane of image - xy, xz, yz
+    [VERSION]   Change plane of image -> xy, xz, yz
     [COLOR]     Change color of the line with first letter of ROYGBIV
-    [SPEED]     Change speed of drawing - default = 60
+    [SPEED]     Change speed of drawing -> default = 60
 ```
