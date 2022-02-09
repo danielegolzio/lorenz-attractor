@@ -96,7 +96,7 @@ def main(
         # rainbow >
         # pygame.draw.line(screen, (np.random.randint(100, 255),np.random.randint(100, 255), np.random.randint(100, 255)), prev_coords, coords)
         pygame.display.update()
-        print(x,y,z)
+        # print(x,y,z)
 
 pygame.quit()
 
