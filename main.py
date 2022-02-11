@@ -26,7 +26,6 @@ def main(
     else:
         colorI = 7
 
-    
     pygame.init()
 
     dimensions = (1920, 1080)
