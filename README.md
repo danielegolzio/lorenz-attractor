@@ -21,4 +21,7 @@ Arguments:
     [POPULATION]    Number of particles         [default = 1]
     [SIZE]          Size of particle            [default = 1]
     [SPEED]         Change speed of particle    [default = 60]
+
+Options:
+    -t, --trail     Show particle trail         [default = False]   
 ```
