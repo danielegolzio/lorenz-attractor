@@ -45,17 +45,17 @@ class particle():
 
     def draw(self):
         coords = (int((self.x*scale)+500+width//2),int((self.y*scale)+height//2)+height//2)
-        pygame.draw.circle(screen, self.color, coords, 1)
+        pygame.draw.circle(screen, self.color, coords, 5)
         pygame.display.update()
 
-population = 2
+population = 12
 
 # p = [particle((0.01+(i*0.001)), 0.01, 0, 0, (random.choice(colors))) for i in range(population)]
-p = [particle((0.001+(i*0.001)), 0.01, 0, 0, (random.randint(50,255),random.randint(50,255),random.randint(50,255))) for i in range(population)]
+p = [particle((0.01+(i*(0.01/population))), 0.01, 0, 0, (random.randint(50,255),random.randint(50,255),random.randint(50,255))) for i in range(population)]
 
 
 while run:
-    # screen.fill((0,0,0))
+    screen.fill((0,0,0))
     clock.tick(fps)
     for i in pygame.event.get():
         if i.type == pygame.QUIT:
