@@ -89,9 +89,11 @@ def main(
     while run:
         screen.fill((0,0,0))
         clock.tick(fps)
+
         for i in pygame.event.get():
             if i.type == pygame.QUIT:
                 run = False
+
         for i in range(len(p)):
             p[i].calc()
             p[i].draw()
