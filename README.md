@@ -1,5 +1,5 @@
 # Lorenz attractor
-
+<img src="https://i.ibb.co/F7QW7Tn/1.png" alt="xy plane" width=200 height=200><img src="https://i.ibb.co/0mbYDgH/1.png" alt="xz plane" width=200 height=200><img src="https://i.ibb.co/MDZPTmq/1.png" alt="yz plane" width=200 height=200>
 ## Getting started
 
 ### Installation
