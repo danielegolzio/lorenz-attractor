@@ -3,10 +3,10 @@ import random
 import typer
 
 def main(
-    speed: int = typer.Argument(None),
     version: str = typer.Argument(None),
     population: int = typer.Argument(None),
-    size: int = typer.Argument(None)
+    size: int = typer.Argument(None),
+    speed: int = typer.Argument(None)
 ):
     # pygame initialize
     pygame.init()
