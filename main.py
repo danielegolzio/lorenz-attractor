@@ -3,10 +3,10 @@ import random
 import typer
 
 def main(
-    version: str = typer.Argument(None),
-    population: int = typer.Argument(None),
-    size: int = typer.Argument(None),
-    speed: int = typer.Argument(None)
+    version: str = typer.Argument("xy",help=("Change image plane          ")),
+    population: int = typer.Argument("1",help=("Change number of particles  ")),
+    size: int = typer.Argument("1",help=("Change size of particle     ")),
+    speed: int = typer.Argument("60",help=("Change speed of particle    "))
 ):
     # pygame initialize
     pygame.init()
