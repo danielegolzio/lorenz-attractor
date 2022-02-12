@@ -3,10 +3,11 @@ import random
 import typer
 
 def main(
-    version: str = typer.Argument("xy",help=("Change image plane          ")),
-    population: int = typer.Argument("1",help=("Change number of particles  ")),
-    size: int = typer.Argument("1",help=("Change size of particle     ")),
-    speed: int = typer.Argument("60",help=("Change speed of particle    "))
+        version: str = typer.Argument("xy",help=("Change image plane          ")),
+        population: int = typer.Argument("1",help=("Change number of particles  ")),
+        size: int = typer.Argument("1",help=("Change size of particle     ")),
+        speed: int = typer.Argument("60",help=("Change speed of particle    ")),
+        trail: bool=typer.Option(False, "--trail", "-t", help="Show particle trail")
 ):
     # pygame initialize
     pygame.init()
@@ -87,8 +88,10 @@ def main(
 
     run = True
     while run:
-        screen.fill((0,0,0))
         clock.tick(fps)
+
+        if not(trail):
+            screen.fill((0,0,0))
 
         for i in pygame.event.get():
             if i.type == pygame.QUIT:
