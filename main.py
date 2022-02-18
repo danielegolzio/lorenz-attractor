@@ -3,12 +3,14 @@ import random
 import typer
 
 def main(
-        version: str = typer.Argument("xy",help=("Change image plane          ")),
+        plane: str = typer.Argument("xy",help=("Change image plane          ")),
         population: int = typer.Argument("1",help=("Change number of particles  ")),
         size: int = typer.Argument("1",help=("Change size of particle     ")),
         speed: int = typer.Argument("60",help=("Change speed of particle    ")),
-        trail: bool=typer.Option(False, "--trail", "-t", help="Show particle trail")
+        trail: bool=typer.Option(False, "--trail", "-t", help="Show particle trail"),
+        funky: bool=typer.Option(False, "--funky", "-f", help="Choose random plane for each particle")
 ):
+    planes = ["xy", "xz", "yz"]
     # pygame initialize
     pygame.init()
 
@@ -33,14 +35,14 @@ def main(
 
     # particle class
     class particle():
-        def __init__(self, t, x, y, z, color, scale, version):
+        def __init__(self, t, x, y, z, color, scale, plane):
             self.t = t
             self.x = x
             self.y = y
             self.z = z
             self.color = color
             self.scale = scale
-            self.version = version
+            self.plane = plane
 
         def calc(self):
             dx = (o * (self.y - self.x)) * self.t
@@ -53,11 +55,11 @@ def main(
             self.z = self.z + dz
 
         def draw(self):
-            if self.version == "xy" or self.version == "yx":
+            if self.plane == "xy" or self.plane == "yx":
                 coords = (int((self.x*self.scale)+500+width//2),int((self.y*self.scale)+height//2)+height//2)
-            elif self.version == "zy" or self.version == "yz":
+            elif self.plane == "zy" or self.plane == "yz":
                 coords = (int((self.z*self.scale)+80+width//2),int((self.y*self.scale)+height//2)+height//2)
-            elif self.version == "xz" or self.version == "zx":
+            elif self.plane == "xz" or self.plane == "zx":
                 coords = (int((self.x*self.scale)+500+width//2),int((self.z*self.scale)+height//4))
             else:
                 coords = (int((self.x*self.scale)+500+width//2),int((self.y*self.scale)+height//2)+height//2)
@@ -70,11 +72,11 @@ def main(
     else:
         fps = 60
 
-    if version == "xy" or version == "yx":
+    if plane == "xy" or plane == "yx":
         scale = 15
-    elif version == "zy" or version == "yz":
+    elif plane == "zy" or plane == "yz":
         scale = 15
-    elif version == "xz" or version == "zx":
+    elif plane == "xz" or plane == "zx":
         scale = 17
     else:
         scale = 15
@@ -84,7 +86,10 @@ def main(
     else:
         population = 1
 
-    p = [particle((0.01+(i*(0.01/population))), 0.01, 0, 0, (random.randint(50,255),random.randint(50,255),random.randint(50,255)), scale, version) for i in range(population)]
+    if funky:
+        p = [particle((0.01+(i*(0.01/population))), 0.01, 0, 0, (random.randint(50,255),random.randint(50,255),random.randint(50,255)), scale, random.choice(planes)) for i in range(population)]
+    else:
+        p = [particle((0.01+(i*(0.01/population))), 0.01, 0, 0, (random.randint(50,255),random.randint(50,255),random.randint(50,255)), scale, plane) for i in range(population)]
 
     run = True
     while run:
