@@ -8,9 +8,11 @@ def main(
         plane: str = typer.Argument("xy",help=("Change image plane          ")),
         speed: int = typer.Argument("60",help=("Change speed of particle    ")),
         trail: bool=typer.Option(False, "--trail", "-t", help="Show particle trail"),
-        funky: bool=typer.Option(False, "--funky", "-f", help="Choose random plane for each particle")
+        funky: bool=typer.Option(False, "--funky", "-f", help="Choose random plane for each particle"),
+        rand: bool=typer.Option(False, "--random", "-r", help="Choose random plane")
 ):
     planes = ["xy", "xz", "yz"]
+
     # pygame initialize
     pygame.init()
 
@@ -29,9 +31,9 @@ def main(
         size = 1
 
     # constants
-    o = 10.0 # sigma
-    rho = 28.0 # rho
-    B = 8.0 / 3.0 # beta
+    o = 10.0        # sigma
+    rho = 28.0      # rho
+    B = 8.0 / 3.0   # beta
 
     # particle class
     class particle():
@@ -88,6 +90,10 @@ def main(
 
     if funky:
         p = [particle((0.01+(i*(0.01/population))), 0.01, 0, 0, (random.randint(50,255),random.randint(50,255),random.randint(50,255)), scale, random.choice(planes)) for i in range(population)]
+    elif rand:
+        ver = random.choice(planes)
+        print(ver)
+        p = [particle((0.01+(i*(0.01/population))), 0.01, 0, 0, (random.randint(50,255),random.randint(50,255),random.randint(50,255)), scale, ver) for i in range(population)]
     else:
         p = [particle((0.01+(i*(0.01/population))), 0.01, 0, 0, (random.randint(50,255),random.randint(50,255),random.randint(50,255)), scale, plane) for i in range(population)]
 
