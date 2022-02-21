@@ -23,7 +23,9 @@ Arguments:
     [SPEED]         Change speed of particle    [default = 60]
 
 Options:
-    -f, --funky     Random plane                [default = False]
-    -t, --trail     Show particle trail         [default = False]   
+    --help          Show all arguments          [default = False]
+    -f, --funky     Random plane per particle   [default = False]
+    -t, --trail     Show particle trail         [default = False]
+    -r, --random    Random plane                [default = False]
 ```
 
