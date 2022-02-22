@@ -69,11 +69,6 @@ def main(
             pygame.draw.circle(screen, self.color, coords, size)
             pygame.display.update()
 
-    if speed != None:
-        fps = speed
-    else:
-        fps = 60
-
     if plane == "xy" or plane == "yx":
         scale = 15
     elif plane == "zy" or plane == "yz":
@@ -88,11 +83,15 @@ def main(
     else:
         population = 1
 
+    if speed != None:
+        fps = speed
+    else:
+        fps = population
+
     if funky:
         p = [particle((0.01+(i*(0.01/population))), 0.01, 0, 0, (random.randint(50,255),random.randint(50,255),random.randint(50,255)), scale, random.choice(planes)) for i in range(population)]
     elif rand:
         ver = random.choice(planes)
-        print(ver)
         p = [particle((0.01+(i*(0.01/population))), 0.01, 0, 0, (random.randint(50,255),random.randint(50,255),random.randint(50,255)), scale, ver) for i in range(population)]
     else:
         p = [particle((0.01+(i*(0.01/population))), 0.01, 0, 0, (random.randint(50,255),random.randint(50,255),random.randint(50,255)), scale, plane) for i in range(population)]
@@ -112,7 +111,10 @@ def main(
             p[i].calc()
             p[i].draw()
 
-pygame.quit()
+    pygame.quit()
+
+    p
+    typer.secho(f"plane: {plane}, population: {population}, speed: {fps}, circle size: {size}", fg=typer.colors.RED)
 
 if __name__ == "__main__":
     typer.run(main)
