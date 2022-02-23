@@ -67,7 +67,6 @@ def main(
                 coords = (int((self.x*self.scale)+500+width//2),int((self.y*self.scale)+height//2)+height//2)
 
             pygame.draw.circle(screen, self.color, coords, size)
-            pygame.display.update()
 
     if plane == "xy" or plane == "yx":
         scale = 15
@@ -86,7 +85,7 @@ def main(
     if speed != None:
         fps = speed
     else:
-        fps = population
+        speed = fps = 30
 
     if funky:
         p = [particle((0.01+(i*(0.01/population))), 0.01, 0, 0, (random.randint(50,255),random.randint(50,255),random.randint(50,255)), scale, random.choice(planes)) for i in range(population)]
@@ -110,6 +109,8 @@ def main(
         for i in range(len(p)):
             p[i].calc()
             p[i].draw()
+
+        pygame.display.update()
 
     pygame.quit()
 
