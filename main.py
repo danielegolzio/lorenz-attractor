@@ -6,7 +6,7 @@ def main(
         population: int = typer.Argument("1",help=("Change number of particles  ")),
         size: int = typer.Argument("1",help=("Change size of particle     ")),
         plane: str = typer.Argument("xy",help=("Change image plane          ")),
-        speed: int = typer.Argument("60",help=("Change speed of particle    ")),
+        speed: int = typer.Argument("30",help=("Change speed of particle    ")),
         trail: bool=typer.Option(False, "--trail", "-t", help="Show particle trail"),
         funky: bool=typer.Option(False, "--funky", "-f", help="Choose random plane for each particle"),
         rand: bool=typer.Option(False, "--random", "-r", help="Choose random plane")
