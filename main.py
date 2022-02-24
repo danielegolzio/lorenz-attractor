@@ -68,6 +68,7 @@ def main(
 
             pygame.draw.circle(screen, self.color, coords, size)
 
+
     if plane == "xy" or plane == "yx":
         scale = 15
     elif plane == "zy" or plane == "yz":
@@ -87,13 +88,15 @@ def main(
     else:
         speed = fps = 30
 
+    cmin = 100
+    cmax = 255
     if funky:
-        p = [particle((0.01+(i*(0.01/population))), 0.01, 0, 0, (random.randint(50,255),random.randint(50,255),random.randint(50,255)), scale, random.choice(planes)) for i in range(population)]
+        p = [particle((0.01+(i*(0.01/population))), 0.01, 0, 0, (random.randint(cmin,cmax),random.randint(cmin,cmax),random.randint(cmin,cmax)), scale, random.choice(planes)) for i in range(population)]
     elif rand:
         ver = random.choice(planes)
-        p = [particle((0.01+(i*(0.01/population))), 0.01, 0, 0, (random.randint(50,255),random.randint(50,255),random.randint(50,255)), scale, ver) for i in range(population)]
+        p = [particle((0.01+(i*(0.01/population))), 0.01, 0, 0, (random.randint(cmin,cmax),random.randint(cmin,cmax),random.randint(cmin,cmax)), scale, ver) for i in range(population)]
     else:
-        p = [particle((0.01+(i*(0.01/population))), 0.01, 0, 0, (random.randint(50,255),random.randint(50,255),random.randint(50,255)), scale, plane) for i in range(population)]
+        p = [particle((0.01+(i*(0.01/population))), 0.01, 0, 0, (random.randint(cmin,cmax),random.randint(cmin,cmax),random.randint(cmin,cmax)), scale, plane) for i in range(population)]
 
     run = True
     while run:
