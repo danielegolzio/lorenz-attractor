@@ -88,7 +88,7 @@ def main(
     else:
         speed = fps = 30
 
-    cmin = 30
+    cmin = 50
     cmax = 200
     if funky:
         p = [particle((0.01+(i*(0.01/population))), 0.01, 0, 0, (random.randint(cmin,cmax),random.randint(cmin,cmax),random.randint(cmin,cmax)), scale, random.choice(planes)) for i in range(population)]
