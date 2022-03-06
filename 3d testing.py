@@ -1,9 +1,8 @@
-from xml.dom import NotSupportedErr
 from p5 import *
 
 
 def setup():
-    size(720, 400)
+    size(720, 720)
 
 
 # def draw():
@@ -22,10 +21,10 @@ def setup():
 def draw():
     stroke(114)
     background(0, 0, 0)
-    rotate_x(frame_count * 0.02)
+    rotate_x(-mouse_y * 0.02)
     rotate_z(frame_count * 0.02)
-    rotate_y(frame_count * 0.02)
-    cone(300, 200)
+    rotate_z(-mouse_x * 0.02)
+    cone(300, 500)
 
 
 if __name__ == "__main__":
