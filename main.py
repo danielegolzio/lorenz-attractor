@@ -1,6 +1,7 @@
 import pygame
 import random
 import typer
+import ctypes
 
 
 def main(
@@ -19,7 +20,8 @@ def main(
     # pygame initialize
     pygame.init()
 
-    dimensions = (1920, 1080)
+    user32 = ctypes.windll.user32
+    dimensions = (user32.GetSystemMetrics(0), user32.GetSystemMetrics(1))
     width = dimensions[0] // 2
     height = dimensions[1] // 2
 
@@ -176,7 +178,6 @@ def main(
 
     pygame.quit()
 
-    p
     typer.secho(
         f"plane: {plane}, population: {population}, speed: {fps}, circle size: {size}",
         fg=typer.colors.RED,
