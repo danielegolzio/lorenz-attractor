@@ -1,31 +1,33 @@
-from p5 import *
+from ursina import *
+
+app = Ursina()
+
+p = Entity(model="sphere", scale=(0.1, 0.1, 0.1), position=(0, 0, 0))
+# dx = (o * (self.y - self.x)) * self.t
+# self.x = self.x + dx
+
+# dy = ((self.x * (rho - self.z)) - self.y) * self.t
+# self.y = self.y + dy
+
+# dz = ((self.x * self.y) - (B * self.z)) * self.t
+# self.z = self.z + dz
+
+o = 10.0  # sigma
+rho = 28.0  # rho
+B = 8.0 / 3.0  # beta
+t = 0.001
+scale = 0.1
 
 
-def setup():
-    size(720, 720)
+def update():
+    dx = (o * (p.y - p.x)) * t
+    dy = ((p.x * (rho - p.z)) - p.y) * t
+    dz = ((p.x * p.y) - (B * p.z)) * t
+    p.x += dx
+    p.y += dy
+    p.z += dz
+    p.x += held_keys["d"] * time.dt
+    p.x -= held_keys["a"] * time.dt
 
 
-def draw():
-    no_stroke()
-    background(205, 102, 94)
-    rotate_x(frame_count * 0.02)
-    rotate_y(frame_count * 0.01)
-    blinn_phong_material()
-    cone(200, 300)
-    locX = mouse_x - width / 2
-    locY = mouse_y - height / 2
-    light_specular(0, 0, 255)
-    point_light(360, 360 * 1.5, 360, locX, locY, 400)
-
-
-# def draw():
-#     stroke(114)
-#     background(0, 0, 0)
-#     rotate_x(-mouse_y * 0.02)
-#     rotate_z(frame_count * 0.02)
-#     rotate_z(-mouse_x * 0.02)
-#     cone(300, 500)
-
-
-if __name__ == "__main__":
-    run(mode="P3D")
+app.run()
