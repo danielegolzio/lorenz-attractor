@@ -10,10 +10,8 @@ def main(
     plane: str = typer.Argument("xy", help=("Change image plane          ")),
     speed: int = typer.Argument("30", help=("Change speed of particle    ")),
     trail: bool = typer.Option(False, "--trail", "-t", help="Show particle trail"),
-    funky: bool = typer.Option(
-        False, "--funky", "-f", help="Choose random plane for each particle"
-    ),
-    rand: bool = typer.Option(False, "--random", "-r", help="Choose random plane"),
+    funky: bool = typer.Option(False, "--funky", "-f", help="Choose random plane for each particle"),
+    rand: bool = typer.Option(False, "--random", "-r", help="Choose random plane")
 ):
     planes = ["xy", "xz", "yz"]
 
@@ -63,25 +61,16 @@ def main(
 
         def draw(self):
             if self.plane == "xy" or self.plane == "yx":
-                coords = (
-                    int((self.x * self.scale) + 500 + width // 2),
-                    int((self.y * self.scale) + height // 2) + height // 2,
-                )
+                coords = (int((self.x * self.scale) + 500 + width // 2), int((self.y * self.scale) + height // 2) + height // 2)
+
             elif self.plane == "zy" or self.plane == "yz":
-                coords = (
-                    int((self.z * self.scale) + 80 + width // 2),
-                    int((self.y * self.scale) + height // 2) + height // 2,
-                )
+                coords = (int((self.z * self.scale) + 80 + width // 2), int((self.y * self.scale) + height // 2) + height // 2)
+            
             elif self.plane == "xz" or self.plane == "zx":
-                coords = (
-                    int((self.x * self.scale) + 500 + width // 2),
-                    int((self.z * self.scale) + height // 4),
-                )
+                coords = (int((self.x * self.scale) + 500 + width // 2), int((self.z * self.scale) + height // 4))
+            
             else:
-                coords = (
-                    int((self.x * self.scale) + 500 + width // 2),
-                    int((self.y * self.scale) + height // 2) + height // 2,
-                )
+                coords = (int((self.x * self.scale) + 500 + width // 2), int((self.y * self.scale) + height // 2) + height // 2)
 
             pygame.draw.circle(screen, self.color, coords, size)
 
@@ -107,57 +96,12 @@ def main(
     cmin = 10
     cmax = 255
     if funky:
-        p = [
-            particle(
-                (0.01 + (i * (0.01 / population))),
-                0.01,
-                0,
-                0,
-                (
-                    random.randint(cmin, cmax),
-                    random.randint(cmin, cmax),
-                    random.randint(cmin, cmax),
-                ),
-                scale,
-                random.choice(planes),
-            )
-            for i in range(population)
-        ]
+        p = [particle((0.01 + (i * (0.01 / population))), 0.01, 0, 0, (random.randint(cmin, cmax), random.randint(cmin, cmax), random.randint(cmin, cmax)), scale, random.choice(planes)) for i in range(population)]
     elif rand:
         ver = random.choice(planes)
-        p = [
-            particle(
-                (0.01 + (i * (0.01 / population))),
-                0.01,
-                0,
-                0,
-                (
-                    random.randint(cmin, cmax),
-                    random.randint(cmin, cmax),
-                    random.randint(cmin, cmax),
-                ),
-                scale,
-                ver,
-            )
-            for i in range(population)
-        ]
+        p = [particle((0.01 + (i * (0.01 / population))), 0.01, 0, 0, (random.randint(cmin, cmax), random.randint(cmin, cmax), random.randint(cmin, cmax)), scale, ver) for i in range(population)]
     else:
-        p = [
-            particle(
-                (0.01 + (i * (0.01 / population))),
-                0.01,
-                0,
-                0,
-                (
-                    random.randint(cmin, cmax),
-                    random.randint(cmin, cmax),
-                    random.randint(cmin, cmax),
-                ),
-                scale,
-                plane,
-            )
-            for i in range(population)
-        ]
+        p = [particle((0.01 + (i * (0.01 / population))), 0.01, 0, 0, (random.randint(cmin, cmax), random.randint(cmin, cmax), random.randint(cmin, cmax)), scale, plane) for i in range(population)]
 
     run = True
     while run:
@@ -178,10 +122,7 @@ def main(
 
     pygame.quit()
 
-    typer.secho(
-        f"plane: {plane}, population: {population}, speed: {fps}, circle size: {size}",
-        fg=typer.colors.RED,
-    )
+    typer.secho(f"plane: {plane}, population: {population}, speed: {fps}, circle size: {size}", fg=typer.colors.RED)
 
 
 if __name__ == "__main__":
