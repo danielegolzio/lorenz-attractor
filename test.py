@@ -14,7 +14,7 @@ def main():
 
     size = 1
     angle = 0
-    population = 10
+    population = 10000
     scale = 6
     o = 10.0 # sigma
     rho = 28.0 # rho
@@ -83,7 +83,7 @@ def main():
 
     p = [Particle((0.01+(i*(0.01/population))),0.01,0,0,(255,255,255),scale, size) for i in range(population)]
     while True:
-        angle -= 0.0001
+        angle -= 0.00005
         screen.fill((0,0,0))
         for i in range(len(p)):
             p[i].calc()
