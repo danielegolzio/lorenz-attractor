@@ -57,8 +57,10 @@ def main():
             self.y = projected[1]
 
         def draw(self):
-            x = (self.x * self.scale) + (width // 2)
-            y = (self.y * self.scale) + (height // 2) 
+            # x = (self.x * self.scale) + (width // 2)
+            # y = (self.y * self.scale) + (height // 2)
+            x = (self.x * self.scale)
+            y = (self.y * self.scale)
             pg.draw.circle(screen, self.color, (x, y), size)
 
     p = [particle((0.01 + (i * (0.01 / population))), 0.01, 0, 0, (255, 255, 255), scale) for i in range(population)]
