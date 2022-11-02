@@ -34,6 +34,10 @@ class Particle:
         dz = ((self.x * self.y) - (self.B * self.z)) * self.t
         self.z = self.z + dz
 
+        self.xproj = 0
+        self.yproj = 0
+        self.zproj = 0
+
     def rotateX(self, angle):
         x, y, z = self.x, self.y, self.z
         point = np.array([x, y, z])
