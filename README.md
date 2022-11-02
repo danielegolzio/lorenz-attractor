@@ -28,4 +28,9 @@ Options:
     -t, --trail     Show particle trail         [default = False]
     -r, --random    Random plane                [default = False]
 ```
+# Lorenz Attractor library
+## Usage
+```
+
+```
 

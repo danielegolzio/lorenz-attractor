@@ -6,12 +6,12 @@ def main():
     screen = pg.display.set_mode(P.dimensions)
     clock = pg.time.Clock()
 
-    population = 700
+    population = 100
     scale = 15
-    size = 1
+    point_size = 1
     angle = 0
 
-    p = [P.Particle((0.01+(i*(0.01/population))),[0.1,0,0],(255,255,255),scale, size) for i in range(population)]
+    p = [P.Particle((0.01+(i*(0.01/population))),[0.1,0,0], scale) for i in range(population)]
 
     while True:
         angle += 0.005
@@ -19,8 +19,8 @@ def main():
         for i in range(len(p)):
             p[i].calc()
             p[i].rotateY(angle)
-            p[i].project()
-            p[i].draw()
+            point = p[i].project()
+            pg.draw.circle(screen, (255,255,255), point, point_size)
 
         [exit() for i in pg.event.get() if i.type == pg.QUIT]
         pg.display.set_caption(f"{round(clock.get_fps())} FPS")
