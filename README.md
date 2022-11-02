@@ -14,7 +14,7 @@ pip install -r requirements.txt
 - To view lorenz attractor, run
 ```
 python main.py [arguments]
-```
+``` 
 ```
 Arguments:
     [POPULATION]    Number of particles         [default = 1]
@@ -31,6 +31,5 @@ Options:
 # Lorenz Attractor library
 ## Usage
 ```
-
 ```
 
