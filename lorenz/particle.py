@@ -34,9 +34,9 @@ class Particle:
         dz = ((self.x * self.y) - (self.B * self.z)) * self.t
         self.z = self.z + dz
 
-        self.xproj = 0
-        self.yproj = 0
-        self.zproj = 0
+        self.xproj = self.x
+        self.yproj = self.y
+        self.zproj = self.z
 
     def rotateX(self, angle):
         x, y, z = self.x, self.y, self.z
@@ -91,4 +91,6 @@ class Particle:
         self.yproj = projected[0][1]
         x = (self.xproj * self.scale) + (self.width // 2)
         y = (self.yproj * self.scale) + (self.height // 2)
+        x = (self.xproj * (10 - (1 / self.zproj))) + (self.width // 2)
+        y = (self.yproj * (10 - (1 / self.zproj))) + (self.height // 2)
         return (x, y)
