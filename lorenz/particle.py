@@ -89,6 +89,8 @@ class Particle:
         projected = projected.tolist()
         self.xproj = projected[0][0]
         self.yproj = projected[0][1]
-        x = (self.xproj * self.scale) + (self.width // 2)
-        y = (self.yproj * self.scale) + (self.height // 2)
+        # x = (self.xproj * self.scale) + (self.width // 2)
+        # y = (self.yproj * self.scale) + (self.height // 2)
+        x = (self.xproj * self.zproj) * self.scale + (self.width // 2)
+        y = (self.yproj * self.zproj) * self.scale + (self.height // 2)
         return (x, y)
