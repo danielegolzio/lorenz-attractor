@@ -2,7 +2,7 @@ import lorenz.particle as P
 import pygame as pg
 
 def main():
-    fps = 100
+    fps = 500
     screen = pg.display.set_mode(P.dimensions)
     clock = pg.time.Clock()
 
@@ -11,14 +11,14 @@ def main():
     point_size = 1
     angle = 0
 
-    p = [P.Particle((0.001+(i*(0.001/population))),[0.1,0,0], scale) for i in range(population)]
+    p = [P.Particle((0.01+(i*(0.001/population))),[0.1,0,10], scale) for i in range(population)]
 
     while True:
         angle += 0.01
         screen.fill((0,0,0))
         for i in range(len(p)):
             p[i].calc()
-            #p[i].rotateZ(angle)
+            p[i].rotateY(angle)
             point = p[i].project()
             pg.draw.circle(screen, (127,43,124), point, point_size)
 
