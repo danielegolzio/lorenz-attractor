@@ -1,14 +1,22 @@
 import numpy as np
 import pygame as pg
 import ctypes
+import sys
 
-user32 = ctypes.windll.user32
-dimensions = (user32.GetSystemMetrics(0), user32.GetSystemMetrics(1))
+pg.init()
+if sys.platform.startswith('win'):
+    import ctypes
+    user32 = ctypes.windll.user32
+    dimensions = (user32.GetSystemMetrics(0), user32.GetSystemMetrics(1))
+else:
+    info = pg.display.Info()
+    dimensions = (info.current_w, info.current_h)
+
 screen = pg.display.set_mode(dimensions)
 
 class Particle:
     def __init__(self, t, coords, scale):
-        pg.init()
+        
         self.width = dimensions[0]
         self.height = dimensions[1]
         self.screen = pg.display.set_mode(dimensions)

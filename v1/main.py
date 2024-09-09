@@ -2,6 +2,7 @@ import pygame
 import random
 import typer
 import ctypes
+import sys
 
 
 def main(
@@ -18,8 +19,13 @@ def main(
     # pygame initialize
     pygame.init()
 
-    user32 = ctypes.windll.user32
-    dimensions = (user32.GetSystemMetrics(0), user32.GetSystemMetrics(1))
+    if sys.platform.startswith('win'):  # Windows
+        user32 = ctypes.windll.user32
+        dimensions = (user32.GetSystemMetrics(0), user32.GetSystemMetrics(1))
+    else:  # Unix-based (macOS, Linux)
+        info = pygame.display.Info()
+        dimensions = (info.current_w, info.current_h)
+        
     width = dimensions[0] // 2
     height = dimensions[1] // 2
 

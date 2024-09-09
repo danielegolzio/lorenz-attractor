@@ -2,7 +2,7 @@ import lorenz.particle as P
 import pygame as pg
 
 def main():
-    fps = 500
+    fps = 60
     screen = pg.display.set_mode(P.dimensions)
     clock = pg.time.Clock()
 
