@@ -5,7 +5,7 @@
 ### Installation
 - Clone repo and install dependencies with pip
 ```
-git clone https://github.com/poonchoi/lorenz-attractor.git
+git clone https://github.com/danielegolzio/lorenz-attractor.git
 ```
 ```
 pip install -r requirements.txt
@@ -13,6 +13,7 @@ pip install -r requirements.txt
 ## Usage
 - To view lorenz attractor, run
 ```
+cd v1
 python main.py [arguments]
 ``` 
 ```
@@ -31,5 +32,8 @@ Options:
 # Lorenz Attractor library
 ## Usage
 ```
+it's located under lorenz-attractor/lorenz
+
+you can either use particle.py (made by me) or particle_besir.py (if you know you know)
 ```
 
