@@ -36,5 +36,9 @@ Options:
 it's located under lorenz-attractor/lorenz
 
 you can either use particle.py (made by me) or particle_besir.py (if you know you know)
+
+Particle class makes one point that follows the lorenz attractor (in 3D)
+
+open 3D_example.py to see example usage of particle class
 ```
 
