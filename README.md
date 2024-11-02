@@ -13,6 +13,7 @@ pip install -r requirements.txt
 ## Usage
 - To view lorenz attractor, run
 ```
+cd v1
 python main.py [arguments]
 ``` 
 ```
@@ -32,5 +33,8 @@ Options:
 ## Usage
 
 ```
+it's located under lorenz-attractor/lorenz
+
+you can either use particle.py (made by me) or particle_besir.py (if you know you know)
 ```
 
