@@ -8,7 +8,7 @@ def main():
 
     population = 1000
     scale = 15
-    point_size = 1
+    point_size = 10
     angle = 0
 
     p = [P.Particle((0.01+(i*(0.001/population))),[0.1,0,10], scale) for i in range(population)]

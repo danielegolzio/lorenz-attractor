@@ -5,7 +5,7 @@
 ### Installation
 - Clone repo and install dependencies with pip
 ```
-git clone https://github.com/poonchoi/lorenz-attractor.git
+git clone https://github.com/poonchoi/lorenz-attractor
 ```
 ```
 pip install -r requirements.txt
@@ -30,6 +30,7 @@ Options:
 ```
 # Lorenz Attractor library
 ## Usage
+
 ```
 ```
 
