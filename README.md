@@ -5,7 +5,7 @@
 ### Installation
 - Clone repo and install dependencies with pip
 ```
-git clone https://github.com/poonchoi/lorenz-attractor
+git clone https://github.com/danielegolzio/lorenz-attractor
 ```
 ```
 pip install -r requirements.txt
@@ -35,7 +35,7 @@ Options:
 ```
 it's located under lorenz-attractor/lorenz
 
-you can either use particle.py (made by me) or particle_besir.py (if you know you know)
+you can either use particle.py (made by me) or particle_besir.py
 
 Particle class makes one point that follows the lorenz attractor (in 3D)
 
